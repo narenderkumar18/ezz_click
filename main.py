@@ -9,6 +9,6 @@ while True:
     time.sleep(1)
     second_MousePos = mouse.get_position()
     if second_MousePos == first_MousePos:
-        mouse.click('right')
+        mouse.click('left')
         pyautogui.press('Tab')
-
+        pyautogui.keyUp('Tab')
