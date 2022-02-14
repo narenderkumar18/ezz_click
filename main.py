@@ -9,23 +9,30 @@ first_MousePos = mouse.get_position()
 second_MousePos = mouse.get_position()
 shouldStop = False
  
+
 def threaded_function():
     global shouldStop
     while True:
        if keyboard.read_key() == "x":
             shouldStop = True
             break
+        
+    print('programm stopped')
+
+def threaded_function_2():
+    global first_MousePos
+    global second_MousePos
+    while not shouldStop:
+        first_MousePos = mouse.get_position()
+        time.sleep(1)
+        second_MousePos = mouse.get_position()
+        if second_MousePos == first_MousePos:
+            mouse.click('left')
+            pyautogui.press('q')
+            pyautogui.keyUp('q')
+        
 
 thread = Thread(target = threaded_function)
 thread.start()
-
-while not shouldStop:
-    first_MousePos = mouse.get_position()
-    time.sleep(1)
-    second_MousePos = mouse.get_position()
-    if second_MousePos == first_MousePos:
-        mouse.click('left')
-        pyautogui.press('q')
-        pyautogui.keyUp('q')
-
-print('programm stopped')
+thread2 =Thread(target = threaded_function_2)
+thread2.start()
