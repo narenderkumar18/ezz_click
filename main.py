@@ -1,5 +1,6 @@
 import time
 import mouse
+import pyautogui
 
 first_MousePos = mouse.get_position()
 second_MousePos = mouse.get_position()
@@ -9,4 +10,5 @@ while True:
     second_MousePos = mouse.get_position()
     if second_MousePos == first_MousePos:
         mouse.click('right')
+        pyautogui.press('Tab')
 
