@@ -24,15 +24,15 @@ def threaded_function_2():
     global second_MousePos
     while not shouldStop:
         first_MousePos = mouse.get_position()
-        time.sleep(1)
+        time.sleep(0.75)
         second_MousePos = mouse.get_position()
         if second_MousePos == first_MousePos:
             mouse.click('left')
-            pyautogui.press('q')
-            pyautogui.keyUp('q')
+            pyautogui.press('Tab')
+            pyautogui.keyUp('Tab')
         
 
 thread = Thread(target = threaded_function)
 thread.start()
 thread2 =Thread(target = threaded_function_2)
-thread2.start()
+thread2.start()             
